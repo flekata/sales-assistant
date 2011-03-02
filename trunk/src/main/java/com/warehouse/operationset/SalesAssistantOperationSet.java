@@ -22,9 +22,9 @@ import java.util.List;
  *
  * @author user1
  */
-public class InvoiceAssistantOperationSet extends AOperationSet {
+public class SalesAssistantOperationSet extends AOperationSet {
 
-    public InvoiceAssistantOperationSet(String appClassName, String sessionName) {
+    public SalesAssistantOperationSet(String appClassName, String sessionName) {
         super(appClassName, sessionName);
     }
 

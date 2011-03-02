@@ -7,16 +7,16 @@ package com.warehouse.procedure;
 import com.genrep.operationset.service.exception.OperationSetException;
 import com.genrep.operationset.service.procedure.IProcedure;
 import com.genrep.operationset.service.procedure.ISaveable;
-import com.warehouse.operationset.InvoiceAssistantOperationSet;
+import com.warehouse.operationset.SalesAssistantOperationSet;
 
 
 /**
  *
  * @author user1
  */
-public class InvoiceAssistantProcedure extends InvoiceAssistantOperationSet implements IProcedure {
+public class SalesAssistantProcedure extends SalesAssistantOperationSet implements IProcedure {
 
-    public InvoiceAssistantProcedure(String appClassName, String sessName) {
+    public SalesAssistantProcedure(String appClassName, String sessName) {
         super(appClassName, sessName);
     }
 

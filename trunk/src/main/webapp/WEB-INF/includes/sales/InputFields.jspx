@@ -1,0 +1,55 @@
+<genrep:panelGrid xmlns:h="http://java.sun.com/jsf/html"
+                  xmlns:f="http://java.sun.com/jsf/core"
+                  xmlns:genrep="http://www.genrepsoft.com/jsf"
+                  xmlns:ice="http://www.icesoft.com/icefaces/component"
+                  xmlns:c="http://java.sun.com/jstl/core"
+                  xmlns:ui="http://java.sun.com/jsf/facelets"
+                  columns="1">
+    <genrep:panelGrid columns="2">
+        <genrep:outputLabel id="numbernumber" value="#{genrepmsgs['number']}" />
+        <genrep:inputText id="number" field="number" />
+
+        <genrep:outputLabel id="datedate12" value="#{genrepmsgs['date']}" />
+        <genrep:date id="date12" field="date" />
+
+        <genrep:outputLabel id="invoiceNumberinvoiceNumber" value="#{genrepmsgs['invoiceNumber']}" />
+        <genrep:inputText id="invoiceNumber" field="invoiceNumber" />
+
+        <genrep:outputLabel id="priceprice" value="#{genrepmsgs['price']}" />
+        <genrep:inputText id="price" field="price" />
+    </genrep:panelGrid>
+
+
+
+    <genrep:panelGrid columns="2" rendered="#{form.containerBean.organization!=null}">
+        <genrep:outputLabel value="#{genrepmsgs['accountNumber']}" />
+        <genrep:inputText field="organization.accountNumber" disabled="#{true}"/>
+        <genrep:outputLabel value="#{genrepmsgs['contact']}" />
+        <genrep:inputText field="organization.contact" disabled="#{true}"/>
+        <genrep:outputLabel value="#{genrepmsgs['bank']}" />
+        <genrep:inputText field="organization.bank.name" disabled="#{true}"/> 
+    </genrep:panelGrid>
+    <genrep:panelGrid columns="2">
+        <genrep:outputLabel id="organizationorganization12" value="#{genrepmsgs['organization']}" />
+        <genrep:panelGrid id="Inpuorganizationd" columns="4" >
+            <genrep:combo id="name12"
+                          field="organization"
+                          insertNull="#{false}"
+                          method="get"
+                          labelField="name"
+                          catalogBean="#{clsfCatalog}"
+                          params="com.warehouse.core.Organization"
+                          valueChangeEvent="SetOrg"
+                          submittable="#{true}"
+                          refresh="#{true}"/>
+            <genrep:inputText id="neworganization" size="16"/>
+            <genrep:button id="btnorganization" action="AddNewOrganization" />
+        </genrep:panelGrid>
+    </genrep:panelGrid>
+
+
+
+
+
+
+</genrep:panelGrid>

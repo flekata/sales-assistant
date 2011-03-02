@@ -15,7 +15,7 @@ import java.util.List;
  *
  * @author stojan
  */
-public class InvoiceAssistantServiceReader extends AServiceReader {
+public class SalesAssistantServiceReader extends AServiceReader {
 
     /**
      *

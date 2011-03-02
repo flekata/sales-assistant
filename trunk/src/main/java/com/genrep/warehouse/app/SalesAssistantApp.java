@@ -13,9 +13,9 @@ import org.springframework.security.core.context.SecurityContextHolder;
  *
  * @author user3
  */
-public class InvoiceAssistantApp extends DefaultApplication {
+public class SalesAssistantApp extends DefaultApplication {
 
-    public InvoiceAssistantApp(IApplicationImpl appImplementation) {
+    public SalesAssistantApp(IApplicationImpl appImplementation) {
         super(appImplementation);
     }
 

@@ -13,7 +13,7 @@ import com.warehouse.core.Input;
 import com.warehouse.core.Item;
 import com.warehouse.core.Output;
 import com.warehouse.core.Warehouse;
-import com.warehouse.procedure.InvoiceAssistantProcedure;
+import com.warehouse.procedure.SalesAssistantProcedure;
 
 /**
  *
@@ -32,7 +32,7 @@ public class AddNewWarehouse extends AAction {
             String newItemName = (String) text.getValueObject();
             Warehouse newWarehouse = new Warehouse();
             newWarehouse.setName(newItemName);
-            InvoiceAssistantProcedure proc = new InvoiceAssistantProcedure(AppFactory.getCurrentApplication().getName(), "codexSession");
+            SalesAssistantProcedure proc = new SalesAssistantProcedure(AppFactory.getCurrentApplication().getName(), "codexSession");
             ISaveable saveable = (ISaveable) newWarehouse;
             saveable.setCommitTransaction(true);
             newWarehouse.save(proc);
@@ -49,7 +49,7 @@ public class AddNewWarehouse extends AAction {
             String newItemName = (String) text.getValueObject();
             Warehouse newWarehouse = new Warehouse();
             newWarehouse.setName(newItemName);
-            InvoiceAssistantProcedure proc = new InvoiceAssistantProcedure(AppFactory.getCurrentApplication().getName(), "codexSession");
+            SalesAssistantProcedure proc = new SalesAssistantProcedure(AppFactory.getCurrentApplication().getName(), "codexSession");
             ISaveable saveable = (ISaveable) newWarehouse;
             saveable.setCommitTransaction(true);
             newWarehouse.save(proc);

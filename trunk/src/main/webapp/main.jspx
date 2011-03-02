@@ -7,7 +7,7 @@
              template="/WEB-INF/includes/genrep-templating/defaultTemplate.jspx">
     <ui:define name="page-content" >
         <genrep:formWraper id="Main"
-                           bean="com.warehouse.beans.Content"
+                           bean="com.sales.beans.Content"
                            catalogBean="#{codexCatalog}"
                            enableState="#{false}"
                            writeMode="#{false}">
@@ -20,30 +20,35 @@
                         <ice:menuItem id="Input" actionListener="#{form.containerBean.primaryListener}"
                                       value="#{genrepmsgs['Input']}">
                             <f:param name="myParam"
-                                     value="warehouse/Input.jspx"/>
+                                     value="sales/Input.jspx"/>
+                        </ice:menuItem>
+                        <ice:menuItem id="Organization" actionListener="#{form.containerBean.primaryListener}"
+                                      value="#{genrepmsgs['Organization']}">
+                            <f:param name="myParam"
+                                     value="sales/Organization.jspx"/>
                         </ice:menuItem>
                         <ice:menuItem id="Output" actionListener="#{form.containerBean.primaryListener}"
                                       value="#{genrepmsgs['Output']}">
                             <f:param name="myParam"
-                                     value="warehouse/Output.jspx"/>
+                                     value="sales/Output.jspx"/>
                         </ice:menuItem>
                     </ice:menuItem>
                     <ice:menuItem id="View" actionListener="#{form.containerBean.primaryListener}"
                                   value="#{genrepmsgs['View']}">
-                        <ice:menuItem id="warehouse" actionListener="#{form.containerBean.primaryListener}"
+                        <!-- <ice:menuItem id="warehouse" actionListener="#{form.containerBean.primaryListener}"
                                       value="#{genrepmsgs['warehouse']}">
                             <f:param name="myParam"
                                      value="warehouse/Warehouse.jspx"/>
-                        </ice:menuItem>
+                        </ice:menuItem> -->
                         <ice:menuItem id="InputView" actionListener="#{form.containerBean.primaryListener}"
                                       value="#{genrepmsgs['InputView']}">
                             <f:param name="myParam"
-                                     value="warehouse/InputView.jspx"/>
+                                     value="sales/InputView.jspx"/>
                         </ice:menuItem>
                         <ice:menuItem id="OutputView" actionListener="#{form.containerBean.primaryListener}"
                                       value="#{genrepmsgs['OutputView']}">
                             <f:param name="myParam"
-                                     value="warehouse/OutputView.jspx"/>
+                                     value="sales/OutputView.jspx"/>
                         </ice:menuItem>
                     </ice:menuItem>
                     <!--
