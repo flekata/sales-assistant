@@ -2,18 +2,17 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.warehouse.action;
+package com.sales.action;
 
 import com.genrep.container.service.application.AppFactory;
 import com.genrep.guimodel.gui.comp.combo.Combo;
 import com.genrep.guimodel.gui.comp.text.Text;
 import com.genrep.guimodel.service.action.AAction;
 import com.genrep.operationset.service.procedure.ISaveable;
+import com.sales.core.Input;
+import com.sales.core.Output;
 import com.warehouse.core.Individual;
-import com.warehouse.core.Input;
-import com.warehouse.core.Item;
 import com.warehouse.core.Organization;
-import com.warehouse.core.Output;
 import com.warehouse.procedure.SalesAssistantProcedure;
 
 /**
@@ -59,7 +58,7 @@ public class AddNewOrganization extends AAction {
 
             newIndividual.save(proc);
 
-            out.setIndividual(newIndividual);
+//            out.setIndividual(newIndividual);
             text.setValueObject(null);
             combo.init();
         }

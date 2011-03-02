@@ -12,7 +12,7 @@ import com.genrep.guimodel.gui.comp.text.Text;
 import com.genrep.guimodel.service.action.AAction;
 import com.warehouse.core.Item;
 import com.warehouse.core.Warehouse;
-import com.warehouse.operationset.InvoiceAssistantOperationSet;
+import com.warehouse.operationset.SalesAssistantOperationSet;
 import java.math.BigDecimal;
 import java.util.Date;
 
@@ -58,7 +58,7 @@ public class SearchInput extends AAction {
         Date datecd = null;
         Table table = (Table) getParams()[4];
 
-        InvoiceAssistantOperationSet proc = new InvoiceAssistantOperationSet(AppFactory.getCurrentApplication().getName(), "codexSession");
+        SalesAssistantOperationSet proc = new SalesAssistantOperationSet(AppFactory.getCurrentApplication().getName(), "codexSession");
         table.setValue(proc.findInput(itemname, warname, siz, pr, datecd));
 
         return true;

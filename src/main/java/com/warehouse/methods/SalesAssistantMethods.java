@@ -9,7 +9,7 @@ import com.genrep.guimodel.gui.comp.combo.Combo;
 import com.genrep.guimodel.service.gui.comp.AGUIContainer;
 import com.warehouse.beans.WarehouseTableColumns;
 import com.warehouse.core.Warehouse;
-import com.warehouse.procedure.InvoiceAssistantProcedure;
+import com.warehouse.procedure.SalesAssistantProcedure;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -18,7 +18,7 @@ import java.util.List;
  *
  * @author Kiril Arsov
  */
-public class InvoiceAssistantMethods {
+public class SalesAssistantMethods {
 
     public List getWarehausesFromSql(AGUIContainer container) {
         List<WarehouseTableColumns> list = new ArrayList<WarehouseTableColumns>();
@@ -29,7 +29,7 @@ public class InvoiceAssistantMethods {
             String wrname = (String) wh.getName();
             List inputList = null;
             List outputList = null;
-            InvoiceAssistantProcedure proc = new InvoiceAssistantProcedure(AppFactory.getCurrentApplication().getName(), "codexSession");
+            SalesAssistantProcedure proc = new SalesAssistantProcedure(AppFactory.getCurrentApplication().getName(), "codexSession");
             list = makeListFromObj(proc.getWarehausesBalance(wrname));
         }
         return list;
@@ -45,7 +45,7 @@ public class InvoiceAssistantMethods {
             String wrname = (String) wh.getName();
             List inputList = null;
             List outputList = null;
-            InvoiceAssistantProcedure proc = new InvoiceAssistantProcedure(AppFactory.getCurrentApplication().getName(), "codexSession");
+            SalesAssistantProcedure proc = new SalesAssistantProcedure(AppFactory.getCurrentApplication().getName(), "codexSession");
             inputList = proc.getWarehausesInput(wrname);
             outputList = proc.getWarehausesOutput(wrname);
 

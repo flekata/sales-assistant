@@ -13,7 +13,7 @@ import com.genrep.operationset.service.exception.OperationSetException;
 import com.genrep.operationset.service.procedure.ISaveable;
 import com.warehouse.core.Input;
 import com.warehouse.core.Output;
-import com.warehouse.procedure.InvoiceAssistantProcedure;
+import com.warehouse.procedure.SalesAssistantProcedure;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -29,7 +29,7 @@ public class Delete extends AAction {
         AGUIContainer container = (AGUIContainer) getContainer();
         Object[] params = getParams();
         Table table = (Table) params[0];
-        InvoiceAssistantProcedure proc = new InvoiceAssistantProcedure(AppFactory.getCurrentApplication().getName(), "codexSession");
+        SalesAssistantProcedure proc = new SalesAssistantProcedure(AppFactory.getCurrentApplication().getName(), "codexSession");
         if (container.getContainerBean().getClass().equals(Input.class)) {
             Input in = (Input) getContainer().getContainerBean();
             List list = in.getTableList();

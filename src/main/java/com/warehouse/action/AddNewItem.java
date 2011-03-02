@@ -12,7 +12,7 @@ import com.genrep.operationset.service.procedure.ISaveable;
 import com.warehouse.core.Input;
 import com.warehouse.core.Item;
 import com.warehouse.core.Output;
-import com.warehouse.procedure.InvoiceAssistantProcedure;
+import com.warehouse.procedure.SalesAssistantProcedure;
 
 /**
  *
@@ -31,7 +31,7 @@ public class AddNewItem extends AAction {
             String newItemName = (String) text.getValueObject();
             Item newItem = new Item();
             newItem.setName(newItemName);
-            InvoiceAssistantProcedure proc = new InvoiceAssistantProcedure(AppFactory.getCurrentApplication().getName(), "codexSession");
+            SalesAssistantProcedure proc = new SalesAssistantProcedure(AppFactory.getCurrentApplication().getName(), "codexSession");
             ISaveable saveable = (ISaveable) newItem;
             saveable.setCommitTransaction(true);
             newItem.save(proc);
@@ -48,7 +48,7 @@ public class AddNewItem extends AAction {
             String newItemName = (String) text.getValueObject();
             Item newItem = new Item();
             newItem.setName(newItemName);
-            InvoiceAssistantProcedure proc = new InvoiceAssistantProcedure(AppFactory.getCurrentApplication().getName(), "codexSession");
+            SalesAssistantProcedure proc = new SalesAssistantProcedure(AppFactory.getCurrentApplication().getName(), "codexSession");
             ISaveable saveable = (ISaveable) newItem;
             saveable.setCommitTransaction(true);
             newItem.save(proc);

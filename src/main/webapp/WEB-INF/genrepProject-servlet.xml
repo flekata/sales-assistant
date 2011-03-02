@@ -41,12 +41,12 @@
     <import resource="classpath*:app-init-config.xml" />
     
     <!-- App & Session Impl -->
-    <bean id="invoiceAssistantSessionImpl" class="com.genrep.hibernate.session.manager.HibernateSessionManagerImpl">
+    <bean id="salesAssistantSessionImpl" class="com.genrep.hibernate.session.manager.HibernateSessionManagerImpl">
         <constructor-arg index="0" value="hibernate.cfg.xml" type="java.lang.String" />
     </bean>
-    <bean id="invoiceAssistantSessionManagerBean" scope="session"
+    <bean id="salesAssistantSessionManagerBean" scope="session"
           class="com.genrep.session.manager.impl.DefaultSessionManager">
-        <property name="impl" ref="invoiceAssistantSessionImpl"/>
+        <property name="impl" ref="salesAssistantSessionImpl"/>
         <property name="reloadingSession">
             <map key-type="java.lang.String"
                  value-type="java.lang.Boolean">
@@ -59,18 +59,18 @@
         </property>
     </bean>
 
-    <bean id="invoiceAssistantDocumentManager" class="com.genrep.document.manager.DocumentManager"/>
+    <bean id="salesAssistantDocumentManager" class="com.genrep.document.manager.DocumentManager"/>
 
-    <bean id="invoiceAssistant-application" factory-method="createApplication"
+    <bean id="salesAssistant-application" factory-method="createApplication"
           class="com.genrep.container.service.application.AppFactory">
-        <constructor-arg index="0" value="com.genrep.warehouse.app.InvoiceAssistantApp" type="java.lang.String" />
+        <constructor-arg index="0" value="com.genrep.warehouse.app.SalesAssistantApp" type="java.lang.String" />
         <constructor-arg index="1" value="com.genrep.app.JSFAppImpl" type="java.lang.String" />
-        <property name="sessionManagerName" value="invoiceAssistantSessionManagerBean"/>
-        <property name="documentManager" ref="invoiceAssistantDocumentManager"/>
+        <property name="sessionManagerName" value="salesAssistantSessionManagerBean"/>
+        <property name="documentManager" ref="salesAssistantDocumentManager"/>
     </bean>
 
-    <bean id="defaultOperationSet" class="com.warehouse.procedure.InvoiceAssistantProcedure" scope="session">
-        <constructor-arg index="0" value="com.genrep.warehouse.app.InvoiceAssistantApp" type="java.lang.String"/>
+    <bean id="defaultOperationSet" class="com.warehouse.procedure.SalesAssistantProcedure" scope="session">
+        <constructor-arg index="0" value="com.genrep.warehouse.app.SalesAssistantApp" type="java.lang.String"/>
         <constructor-arg index="1" value="codexEntity" type="java.lang.String" />
     </bean>
 
@@ -86,23 +86,23 @@
     <genrepns:catalog id="clsfCatalog">
 
         <genrepns:methods alias="getWarehauses" 
-                            class="com.warehouse.methods.InvoiceAssistantMethods" 
+                            class="com.warehouse.methods.SalesAssistantMethods" 
                             method="getWarehauses" 
                             params="com.genrep.guimodel.service.gui.comp.AGUIContainer" />
         <genrepns:methods alias="getWarehausesFromSql"
-                            class="com.warehouse.methods.InvoiceAssistantMethods"
+                            class="com.warehouse.methods.SalesAssistantMethods"
                             method="getWarehausesFromSql"
                             params="com.genrep.guimodel.service.gui.comp.AGUIContainer" />
         <genrepns:methods alias="getClassifications"
-                          class="com.genrep.service.reader.InvoiceAssistantServiceReader"
+                          class="com.genrep.service.reader.SalesAssistantServiceReader"
                           method="getClassifications"
                           params="java.lang.String" />
         <genrepns:methods alias="get"
-                          class="com.genrep.service.reader.InvoiceAssistantServiceReader"
+                          class="com.genrep.service.reader.SalesAssistantServiceReader"
                           method="get"
                           params="java.lang.String" />
         <genrepns:methods alias="getState"
-                          class="com.genrep.service.reader.InvoiceAssistantServiceReader"
+                          class="com.genrep.service.reader.SalesAssistantServiceReader"
                           method="getState"
                           params="java.lang.String" />                       
     </genrepns:catalog>

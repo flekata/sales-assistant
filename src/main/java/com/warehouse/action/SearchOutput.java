@@ -12,7 +12,7 @@ import com.genrep.guimodel.service.action.AAction;
 import com.warehouse.core.Individual;
 import com.warehouse.core.Item;
 import com.warehouse.core.Warehouse;
-import com.warehouse.operationset.InvoiceAssistantOperationSet;
+import com.warehouse.operationset.SalesAssistantOperationSet;
 import java.util.Date;
 
 /**
@@ -60,7 +60,7 @@ public class SearchOutput extends AAction {
         if (individual != null) {
             individualname = (String) individual.getName();
         }
-        InvoiceAssistantOperationSet proc = new InvoiceAssistantOperationSet(AppFactory.getCurrentApplication().getName(), "codexSession");
+        SalesAssistantOperationSet proc = new SalesAssistantOperationSet(AppFactory.getCurrentApplication().getName(), "codexSession");
         table.setValue(proc.findOutput(itemname, warname, siz, orderCode, datecd,individualname));
         return true;
     }

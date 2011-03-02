@@ -13,6 +13,33 @@ import com.genrep.document.ADocument;
 public class Organization extends ADocument {
 
     private String name;
+    private String accountNumber;
+    private String contact;
+    private Bank bank;
+
+    public Bank getBank() {
+        return bank;
+    }
+
+    public void setBank(Bank bank) {
+        this.bank = bank;
+    }
+
+    public String getAccountNumber() {
+        return accountNumber;
+    }
+
+    public String getContact() {
+        return contact;
+    }
+
+    public void setContact(String contact) {
+        this.contact = contact;
+    }
+
+    public void setAccountNumber(String accountNumber) {
+        this.accountNumber = accountNumber;
+    }
 
     public String getName() {
         return name;
