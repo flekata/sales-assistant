@@ -5,22 +5,30 @@
 package com.sales.core;
 
 import com.genrep.persistence.service.AEntity;
-import com.warehouse.core.Organization;
 import java.math.BigDecimal;
 import java.util.Date;
+import java.util.List;
 
 /**
  *
  * @author kiril
  */
 public class Input extends AEntity {
+    // enter date for the invoice
 
     private Date date = new Date();
+    // internal number for the invoce
     private String number;
+    // invoice number
     private String invoiceNumber;
+    // complete value for the invoice
     private BigDecimal price;
+    // company
     private Organization organization;
-
+    /// view fields
+    List<Input> tableList;
+    Integer current;
+    Integer tableListSize;
 
     public Date getDate() {
         return date;
@@ -29,7 +37,6 @@ public class Input extends AEntity {
     public void setDate(Date date) {
         this.date = date;
     }
-
 
     public String getInvoiceNumber() {
         return invoiceNumber;
@@ -61,5 +68,34 @@ public class Input extends AEntity {
 
     public void setPrice(BigDecimal price) {
         this.price = price;
+    }
+
+    public Integer getTableListSize() {
+        if (tableList != null) {
+            tableListSize = tableList.size();
+        }
+        return tableListSize;
+    }
+
+    public void setTableListSize(Integer tableListSize) {
+        if (tableList != null) {
+            tableListSize = tableList.size();
+        }
+    }
+
+    public Integer getCurrent() {
+        return current;
+    }
+
+    public void setCurrent(Integer current) {
+        this.current = current;
+    }
+
+    public List<Input> getTableList() {
+        return tableList;
+    }
+
+    public void setTableList(List<Input> tableList) {
+        this.tableList = tableList;
     }
 }

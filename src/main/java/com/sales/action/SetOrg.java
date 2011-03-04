@@ -7,9 +7,8 @@ package com.sales.action;
 import com.genrep.container.service.application.AppFactory;
 import com.genrep.guimodel.gui.comp.combo.Combo;
 import com.genrep.guimodel.service.action.AAction;
-import com.genrep.system.service.AppSystem;
 import com.sales.core.Input;
-import com.warehouse.core.Organization;
+import com.sales.core.Organization;
 
 /**
  *

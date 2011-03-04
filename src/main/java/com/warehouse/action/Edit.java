@@ -5,8 +5,6 @@
 package com.warehouse.action;
 
 import com.genrep.guimodel.service.action.AAction;
-import com.genrep.guimodel.service.gui.comp.AGUIContainer;
-import com.warehouse.core.Input;
 
 /**
  *

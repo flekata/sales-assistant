@@ -9,8 +9,8 @@ import com.genrep.guimodel.gui.comp.combo.Combo;
 import com.genrep.guimodel.gui.comp.text.Text;
 import com.genrep.guimodel.service.action.AAction;
 import com.genrep.operationset.service.procedure.ISaveable;
-import com.warehouse.core.Bank;
-import com.warehouse.core.Organization;
+import com.sales.core.Bank;
+import com.sales.core.Organization;
 import com.warehouse.procedure.SalesAssistantProcedure;
 
 /**

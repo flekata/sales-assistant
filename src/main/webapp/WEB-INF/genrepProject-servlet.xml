@@ -84,7 +84,7 @@
     </bean>
 
     <genrepns:catalog id="clsfCatalog">
-
+<!--
         <genrepns:methods alias="getWarehauses" 
                             class="com.warehouse.methods.SalesAssistantMethods" 
                             method="getWarehauses" 
@@ -93,6 +93,7 @@
                             class="com.warehouse.methods.SalesAssistantMethods"
                             method="getWarehausesFromSql"
                             params="com.genrep.guimodel.service.gui.comp.AGUIContainer" />
+                            -->
         <genrepns:methods alias="getClassifications"
                           class="com.genrep.service.reader.SalesAssistantServiceReader"
                           method="getClassifications"

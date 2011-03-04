@@ -17,6 +17,7 @@
         <mapping resource="sales/Bank.hbm.xml"/>
         <mapping resource="sales/Organization.hbm.xml"/>
         <mapping resource="sales/Input.hbm.xml"/>
-<!--        <mapping resource="sales/Output.hbm.xml"/>-->
+        <mapping resource="sales/Output.hbm.xml"/>
+        <mapping resource="sales/Payments.hbm.xml"/>
     </session-factory>
 </hibernate-configuration>

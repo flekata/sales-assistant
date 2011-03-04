@@ -20,39 +20,39 @@ import java.util.List;
  */
 public class SalesAssistantMethods {
 
-    public List getWarehausesFromSql(AGUIContainer container) {
-        List<WarehouseTableColumns> list = new ArrayList<WarehouseTableColumns>();
-        AGUIContainer cont = (AGUIContainer) container.getContainers().get("Warehouse");
-        Combo lbox = (Combo) cont.getComponents().get("name");
-        Warehouse wh = (Warehouse) lbox.getValueObject();
-        if (wh != null) {
-            String wrname = (String) wh.getName();
-            List inputList = null;
-            List outputList = null;
-            SalesAssistantProcedure proc = new SalesAssistantProcedure(AppFactory.getCurrentApplication().getName(), "codexSession");
-            list = makeListFromObj(proc.getWarehausesBalance(wrname));
-        }
-        return list;
-    }
-
-    public List getWarehauses(AGUIContainer container) {
-        List<WarehouseTableColumns> list = new ArrayList<WarehouseTableColumns>();
-        AGUIContainer cont = (AGUIContainer) container.getContainers().get("Warehouse");
-//        Warehouse wh = (Warehouse) cont.getContainerBean();
-        Combo lbox = (Combo) cont.getComponents().get("name");
-        Warehouse wh = (Warehouse) lbox.getValueObject();
-        if (wh != null) {
-            String wrname = (String) wh.getName();
-            List inputList = null;
-            List outputList = null;
-            SalesAssistantProcedure proc = new SalesAssistantProcedure(AppFactory.getCurrentApplication().getName(), "codexSession");
-            inputList = proc.getWarehausesInput(wrname);
-            outputList = proc.getWarehausesOutput(wrname);
-
-            list = balance(makeListFromObj(inputList), makeListFromObj(outputList));
-        }
-        return list;
-    }
+//    public List getWarehausesFromSql(AGUIContainer container) {
+//        List<WarehouseTableColumns> list = new ArrayList<WarehouseTableColumns>();
+//        AGUIContainer cont = (AGUIContainer) container.getContainers().get("Warehouse");
+//        Combo lbox = (Combo) cont.getComponents().get("name");
+//        Warehouse wh = (Warehouse) lbox.getValueObject();
+//        if (wh != null) {
+//            String wrname = (String) wh.getName();
+//            List inputList = null;
+//            List outputList = null;
+//            SalesAssistantProcedure proc = new SalesAssistantProcedure(AppFactory.getCurrentApplication().getName(), "codexSession");
+//            list = makeListFromObj(proc.getWarehausesBalance(wrname));
+//        }
+//        return list;
+//    }
+//
+//    public List getWarehauses(AGUIContainer container) {
+//        List<WarehouseTableColumns> list = new ArrayList<WarehouseTableColumns>();
+//        AGUIContainer cont = (AGUIContainer) container.getContainers().get("Warehouse");
+////        Warehouse wh = (Warehouse) cont.getContainerBean();
+//        Combo lbox = (Combo) cont.getComponents().get("name");
+//        Warehouse wh = (Warehouse) lbox.getValueObject();
+//        if (wh != null) {
+//            String wrname = (String) wh.getName();
+//            List inputList = null;
+//            List outputList = null;
+//            SalesAssistantProcedure proc = new SalesAssistantProcedure(AppFactory.getCurrentApplication().getName(), "codexSession");
+//            inputList = proc.getWarehausesInput(wrname);
+//            outputList = proc.getWarehausesOutput(wrname);
+//
+//            list = balance(makeListFromObj(inputList), makeListFromObj(outputList));
+//        }
+//        return list;
+//    }
 
     public List<WarehouseTableColumns> makeListFromObj(List list) {
         List<WarehouseTableColumns> resultList = new ArrayList<WarehouseTableColumns>();
