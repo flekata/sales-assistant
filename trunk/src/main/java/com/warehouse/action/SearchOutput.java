@@ -61,7 +61,7 @@ public class SearchOutput extends AAction {
             individualname = (String) individual.getName();
         }
         SalesAssistantOperationSet proc = new SalesAssistantOperationSet(AppFactory.getCurrentApplication().getName(), "codexSession");
-        table.setValue(proc.findOutput(itemname, warname, siz, orderCode, datecd,individualname));
+//        table.setValue(proc.findOutput(itemname, warname, siz, orderCode, datecd,individualname));
         return true;
     }
 

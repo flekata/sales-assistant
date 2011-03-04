@@ -1,13 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
-    <class name="com.sales.core.Output" table="sales.OUTPUT">
+    <class name="com.sales.core.Output" table="sales.OUTPT">
         <id name="UID">
             <generator class="uuid"/>
         </id>
-        <property column="paid" name="paid"/>
-        <property column="paidPrice" name="paidPrice"/>
-        <many-to-one class="com.warehouse.core.Input"
-        name="input" column="input" />
+        <many-to-one class="com.sales.core.Input"
+        name="inp" column="inp" />
+        <property name="paid">
+            <column name="paid" default="0"/>    
+        </property>
+        <property  name="partlyPaid">
+            <column name="partlyPaid" default="0" />   
+        </property>
+        <many-to-one class="com.sales.core.Payments"
+        name="payments" column="payments" />
+        <property column="paidSum" name="paidSum"/>
     </class>
 </hibernate-mapping>

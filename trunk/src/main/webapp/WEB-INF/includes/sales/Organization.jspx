@@ -5,7 +5,7 @@
                    xmlns:ice="http://www.icesoft.com/icefaces/component"
                    xmlns:c="http://java.sun.com/jstl/core"
                    xmlns:ui="http://java.sun.com/jsf/facelets"
-                   bean="com.warehouse.core.Organization"
+                   bean="com.sales.core.Organization"
                    catalogBean="#{codexCatalog}"
                    enableState="#{false}">
     <genrep:action name="SelectIPfromTable" class="com.genrep.rowAction.SelectIPfromTable">
@@ -37,7 +37,7 @@
                       method="get"
                       labelField="name"
                       catalogBean="#{clsfCatalog}"
-                      params="com.warehouse.core.Bank"
+                      params="com.sales.core.Bank"
                       refresh="#{true}"/>
         <genrep:inputText id="newbankk" size="16"/>
         <genrep:button id="btnbank" action="AddNewBank" />
@@ -49,7 +49,7 @@
                        value="#{genrepmsgs['Cancel']}" />
     </genrep:buttonsWriter>
     <genrep:table id="Organization_Table"
-                  tableClass="com.warehouse.core.Organization"
+                  tableClass="com.sales.core.Organization"
                   columnFields="name">
         <genrep:rowSelector id="SelectedID11" action="SelectIPfromTable" />
         <genrep:columns/>

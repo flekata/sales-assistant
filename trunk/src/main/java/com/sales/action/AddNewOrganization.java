@@ -10,9 +10,9 @@ import com.genrep.guimodel.gui.comp.text.Text;
 import com.genrep.guimodel.service.action.AAction;
 import com.genrep.operationset.service.procedure.ISaveable;
 import com.sales.core.Input;
+import com.sales.core.Organization;
 import com.sales.core.Output;
 import com.warehouse.core.Individual;
-import com.warehouse.core.Organization;
 import com.warehouse.procedure.SalesAssistantProcedure;
 
 /**

@@ -1,0 +1,147 @@
+
+<genrep:formWraper id="InputView"
+                   xmlns:h="http://java.sun.com/jsf/html"
+                   xmlns:f="http://java.sun.com/jsf/core"
+                   xmlns:genrep="http://www.genrepsoft.com/jsf"
+                   xmlns:ice="http://www.icesoft.com/icefaces/component"
+                   xmlns:c="http://java.sun.com/jstl/core"
+                   xmlns:ui="http://java.sun.com/jsf/facelets"
+                   bean="com.sales.core.Input"
+                   catalogBean="#{codexCatalog}"
+                   enableState="#{false}">
+    <genrep:mode name="warn" />
+    <genrep:action name="no" class="com.sales.action.BothAction">
+        <genrep:transit src="*" target="read"/>
+    </genrep:action>
+    <genrep:action name="prepareDelete" class="com.sales.action.BothAction">
+        <genrep:transit src="*" target="warn"/>
+    </genrep:action>
+    <genrep:action name="delete" class="com.sales.action.Delete" params="table_InputView_Table">
+        <genrep:transit src="*" target="read"/>
+    </genrep:action>
+    <genrep:action name="Next" class="com.sales.action.Next">
+        <genrep:transit src="*" target="*"/>
+    </genrep:action>
+    <genrep:action name="Previous" class="com.sales.action.Previous">
+        <genrep:transit src="*" target="*"/>
+    </genrep:action>
+    <genrep:action name="SearchInput" class="com.sales.action.SearchInput"
+                   params="combo_orgNames;date_dates;inputText_invoiceNumbers;table_InputView_Table">
+        <genrep:transit src="*" target="search"/>
+    </genrep:action>
+    <genrep:action name="AddNewOrganization" class="com.sales.action.AddNewOrganization"
+                   params="inputText_neworganization;combo_name12">
+        <genrep:transit src="*" target="*"/>
+    </genrep:action>
+    <genrep:action name="RowSelector" class="com.sales.action.RowSelector" params="table_InputView_Table">
+        <genrep:transit src="*" target="read"/>
+    </genrep:action>
+    <genrep:action name="new" class="com.genrep.action.New">
+        <genrep:transit src="*" target="new"/>
+    </genrep:action>
+    <genrep:action name="edit" class="com.warehouse.action.Edit">
+        <genrep:transit src="*" target="edit"/>
+    </genrep:action>
+    <genrep:action class="com.genrep.action.Cancel"
+                   name="Cancel">
+        <genrep:transit src="*" target="new" />
+    </genrep:action>
+    <h2>Влез преглед</h2>
+    <genrep:panelGroup id="viewinptab" renderOn="new;search">
+        <genrep:panelGrid id="searchfie" columns="10">
+            <genrep:outputLabel value="#{genrepmsgs['orgName']}" />
+            <genrep:combo id="orgNames"
+                          method="get"
+                          labelField="name"
+                          catalogBean="#{clsfCatalog}"
+                          params="com.sales.core.Organization"
+                          submittable="#{true}"
+                          refresh="#{true}"/>
+            <genrep:outputLabel value="#{genrepmsgs['date']}" />
+            <genrep:date id="dates" />
+
+            <genrep:outputLabel value="#{genrepmsgs['invoiceNumber']}" />
+            <genrep:inputText id="invoiceNumbers" />
+        </genrep:panelGrid>
+        <genrep:buttonsWriter id="btwrInputs" form_id="InputView" exclude="Publish;Unpublish;Save;Cancel;Info;New;Cancel;Search" >
+            <genrep:button id="searched" image="/images/search.png"
+                           action="SearchInput"
+                           value="#{genrepmsgs['Search']}" />
+        </genrep:buttonsWriter>
+        <genrep:table id="InputView_Table"
+                      renderOn="search"
+                      tableClass="com.sales.core.Input"
+                      columnFields="number;date;invoiceNumber;price;organization.name">
+            <genrep:rowSelector id="SelectedIDInputView" action="RowSelector" />
+            <genrep:columns/>
+        </genrep:table>
+    </genrep:panelGroup>
+    <genrep:panelCollapsible id="viewi2nnew" renderOn="edit">
+        <ui:include src="/WEB-INF/includes/sales/InputFields.jspx" />
+        <genrep:buttonsWriter id="btwrInput212122" exclude="Publish;Unpublish;Search:ShowAll;Info;New;Cancel">
+            <genrep:button id="Cancelv" image="/images/cancel.png"
+                           action="Cancel" 
+                           value="#{genrepmsgs['Cancel']}" />
+        </genrep:buttonsWriter>
+    </genrep:panelCollapsible>
+    <genrep:panelCollapsible id="viewin" renderOn="read" manualExpand="#{false}">
+        <f:facet name="header" >
+            <genrep:panelGrid id="Inputgrd113" columns="3" styleClass="clos">
+                <genrep:button id="delete1323" action="prepareDelete" image="/images/delete.png" styleClass="clos4"/>
+                <genrep:button id="new1323" action="edit" image="/images/edit.png" styleClass="clos5"/>
+                <genrep:button id="edit1323" action="new" image="/images/close2.PNG" styleClass="clos3"/>
+            </genrep:panelGrid>
+        </f:facet>
+        <genrep:panelGrid id="Inputgrd" columns="2" width="400">
+
+            <h2><genrep:outputLabel id="lblname132" value="#{genrepmsgs['number']}" /></h2>
+            <h1><genrep:outputText id="lblcdd2fsf1" rendered="#{form.containerBean.number!=null}" value="#{form.containerBean.number}" /></h1>
+
+            <h2><genrep:outputLabel id="lbldate132" value="#{genrepmsgs['date']}" /></h2>
+            <h1><genrep:outputText id="lblcdd2fsf2" rendered="#{form.containerBean.date!=null}" value="#{form.storedContainerBean.date}" /></h1>
+
+            <h2><genrep:outputLabel id="lblorganization132" value="#{genrepmsgs['invoiceNumber']}" /></h2>
+            <h1><genrep:outputText id="lblcdd2fsf3" rendered="#{form.containerBean.invoiceNumber!=null}" value="#{form.containerBean.invoiceNumber}" /></h1>
+
+            <h2><genrep:outputLabel id="lbltype132" value="#{genrepmsgs['price']}" /></h2>
+            <h1><genrep:outputText id="lblcdd2fsf4" rendered="#{form.containerBean.price!=null}" value="#{form.containerBean.price}" /></h1>
+
+            <h2><genrep:outputLabel id="lblnote132" value="#{genrepmsgs['organization.name']}" /></h2>
+            <h1><genrep:outputText id="lblcdnoted2fsf4" rendered="#{form.containerBean.organization.name!=null}" value="#{form.containerBean.organization.name}" /></h1>
+
+            <h2><genrep:outputLabel id="lblprice132" value="#{genrepmsgs['organization.accountNumber']}" /></h2>
+            <h1><genrep:outputText id="lblcdd2fsf5" rendered="#{form.containerBean.organization.accountNumber!=null}" value="#{form.containerBean.organization.accountNumber}" /></h1>
+
+            <h2><genrep:outputLabel id="lblitem132" value="#{genrepmsgs['organization.bank.name']}" /></h2>
+            <h1><genrep:outputText id="lblcdd2fsf6" rendered="#{form.containerBean.organization.bank.name!=null}" value="#{form.containerBean.organization.bank.name}" /></h1>
+
+
+        </genrep:panelGrid>
+
+        <genrep:panelGrid id="nav1nav1" columns="3" styleClass="prv">
+            <genrep:button id="nav1" action="Previous" image="/images/prev.png" />
+            <genrep:panelGrid id="bacv2kkok" columns="2" styleClass="nxt1">
+                #{form.containerBean.current} / #{form.containerBean.tableListSize}
+            </genrep:panelGrid>
+            <genrep:panelGrid id="bacv2" columns="2" styleClass="nxt">
+                <genrep:button id="nav2" action="Next" image="/images/next.png"/>
+            </genrep:panelGrid>
+        </genrep:panelGrid>
+    </genrep:panelCollapsible>
+
+
+    <genrep:panelPopup id="pnlPopUpWarn" popUpOn="warn"
+                       draggable="#{false}" modal="#{true}">
+        <genrep:content facetName="header">
+            Внимание
+        </genrep:content>
+        <genrep:content facetName="body">
+            <genrep:panelGroup id="pnlGroupWarn">
+                Дали сте сигурни да го избришете овој запис?
+                <genrep:button id="warnyas" action="delete" image="/images/save.png"/>
+                <genrep:button id="warnno" action="no" image="/images/cancel.png"/>
+            </genrep:panelGroup>
+        </genrep:content>
+    </genrep:panelPopup>
+</genrep:formWraper>
+

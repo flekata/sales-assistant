@@ -59,7 +59,7 @@ public class SearchInput extends AAction {
         Table table = (Table) getParams()[4];
 
         SalesAssistantOperationSet proc = new SalesAssistantOperationSet(AppFactory.getCurrentApplication().getName(), "codexSession");
-        table.setValue(proc.findInput(itemname, warname, siz, pr, datecd));
+//        table.setValue(proc.findInput(itemname, warname, siz, pr, datecd));
 
         return true;
     }

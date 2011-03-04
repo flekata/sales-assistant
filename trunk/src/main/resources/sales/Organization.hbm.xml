@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
-    <class name="com.warehouse.core.Organization" table="sales.ORG">
+    <class name="com.sales.core.Organization" table="sales.ORG">
         <id name="UID">
             <generator class="uuid"/>
         </id>
         <property column="name" name="name"/>
         <property column="accountNumber" name="accountNumber"/>
         <property column="contact" name="contact"/>
-        <many-to-one class="com.warehouse.core.Bank"
+        <many-to-one class="com.sales.core.Bank"
         name="bank" column="bank" />
     </class>
 </hibernate-mapping>

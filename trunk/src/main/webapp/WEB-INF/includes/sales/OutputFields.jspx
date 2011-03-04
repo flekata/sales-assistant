@@ -1,0 +1,92 @@
+
+<genrep:panelGrid
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:genrep="http://www.genrepsoft.com/jsf"
+    xmlns:ice="http://www.icesoft.com/icefaces/component"
+    xmlns:c="http://java.sun.com/jstl/core"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    id="Outputgrd221" columns="1">
+    <genrep:panelGrid columns="4" rendered="#{form.activeModeName!='edit'}">
+        <genrep:popUpWriter
+            id="inputpopup"
+            bean="com.sales.core.Input"
+            catalogBean="#{codexCatalog}"
+            targetField="inp"
+            fieldDisplay="invoiceNumber"
+            title="inp"
+            disabledInput="#{true}"
+            defaultFields="date;number;invoiceNumber;price" />
+    </genrep:panelGrid>
+
+    <genrep:panelGrid columns="4" rendered="#{form.activeModeName=='edit'}">
+        <genrep:combo id="inpcmb"
+                      field="inp"
+                      method="get"
+                      insertNull="#{false}"
+                      labelField="invoiceNumber"
+                      catalogBean="#{clsfCatalog}"
+                      params="com.sales.core.Input"
+                      submittable="#{true}"
+                      refresh="#{true}"/>
+    </genrep:panelGrid>
+    <genrep:panelGrid columns="2" rendered="#{form.containerBean.inp!=null}">
+        <genrep:outputLabel value="#{genrepmsgs['number']}" />
+        <genrep:outputText field="inp.number" />
+        <genrep:outputLabel value="#{genrepmsgs['date']}" />
+        <genrep:outputText field="inp.date" />
+        <genrep:outputLabel value="#{genrepmsgs['invoiceNumber']}" />
+        <genrep:outputText field="inp.invoiceNumber" />
+        <genrep:outputLabel value="#{genrepmsgs['price']}" />
+        <genrep:outputText field="inp.price" />
+        <genrep:outputLabel value="#{genrepmsgs['orgName']}" />
+        <genrep:outputText field="inp.organization.name" />
+        <genrep:outputLabel value="#{genrepmsgs['accountNumber']}" />
+        <genrep:outputText field="inp.organization.accountNumber" />
+        <genrep:outputLabel value="#{genrepmsgs['contact']}" />
+        <genrep:outputText field="inp.organization.contact" />
+        <genrep:outputLabel value="#{genrepmsgs['bank']}" />
+        <genrep:outputText field="inp.organization.bank.name" /> 
+    </genrep:panelGrid>
+
+    <genrep:panelGrid columns="4" rendered="#{form.containerBean.inp!=null and (form.fields['partlyPaid'].valueObject==null or form.fields['partlyPaid'].valueObject==false)}">
+        <genrep:outputLabel id="paidpaid" value="#{genrepmsgs['fullyPaid']}" />
+        <genrep:checkBox id="paid" field="paid" submittable="#{true}"/>
+
+        <genrep:outputLabel id="paidSumpaidSum" value="#{genrepmsgs['paidSum']}" rendered="#{form.fields['paid'].valueObject==true}"/>
+        <genrep:inputText id="paidSum" field="paidSum" rendered="#{form.fields['paid'].valueObject==true}" />
+    </genrep:panelGrid>
+
+    <genrep:panelGrid columns="4" rendered="#{form.containerBean.inp!=null and (form.fields['paid'].valueObject==null or form.fields['paid'].valueObject==false)}">
+        <genrep:outputLabel id="partlyPaidpartlyPaid" value="#{genrepmsgs['partlyPaid']}" />
+        <genrep:checkBox id="partlyPaid" field="partlyPaid" submittable="#{true}"/>
+
+        <genrep:panelGrid columns="4" rendered="#{form.fields['partlyPaid'].valueObject==true}">
+            <genrep:freeCollectionEntry id="Payments"
+                                        bean="com.sales.core.Payments"
+                                        catalogBean="#{codexCatalog}"
+                                        editInPopup="#{false}"
+                                        tableCaption="Payments_Table"
+                                        targetField="payments"
+                                        defaultFields="date;value"
+                                        footerFields="value=sum"
+                                        footerFieldNames="value=paidSum"
+                                        footerFor="value=.container.containerBean"
+
+                                        >
+                <ui:define name="addForm">
+
+                    <genrep:outputLabel value="#{genrepmsgs['date']}" />
+                    <genrep:date field="date"/>
+
+                    <genrep:outputLabel value="#{genrepmsgs['value']}" />
+                    <genrep:inputText field="value"/>
+
+                </ui:define>
+            </genrep:freeCollectionEntry>
+        </genrep:panelGrid>
+
+
+
+    </genrep:panelGrid>
+</genrep:panelGrid>

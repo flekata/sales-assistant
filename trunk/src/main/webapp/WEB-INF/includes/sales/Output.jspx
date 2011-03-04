@@ -1,38 +1,31 @@
-<genrep:formWraper id="Input"
+<genrep:formWraper id="Output"
                    xmlns:h="http://java.sun.com/jsf/html"
                    xmlns:f="http://java.sun.com/jsf/core"
                    xmlns:genrep="http://www.genrepsoft.com/jsf"
                    xmlns:ice="http://www.icesoft.com/icefaces/component"
                    xmlns:c="http://java.sun.com/jstl/core"
                    xmlns:ui="http://java.sun.com/jsf/facelets"
-                   bean="com.sales.core.Input"
+                   bean="com.sales.core.Output"
                    catalogBean="#{codexCatalog}"
                    enableState="#{false}">
     <genrep:action name="SelectIPfromTable" class="com.genrep.rowAction.SelectIPfromTable">
         <genrep:transit src="*" target="edit"/>
     </genrep:action>
-    <genrep:action name="SetOrg" class="com.sales.action.SetOrg">
-        <genrep:transit src="*" target="*"/>
-    </genrep:action>
-    <genrep:action name="AddNewOrganization" class="com.sales.action.AddNewOrganization"
-                   params="inputText_neworganization;combo_name12">
-        <genrep:transit src="*" target="*"/>
-    </genrep:action>
     <genrep:action class="com.genrep.action.Cancel"
                    name="Cancelnew">
         <genrep:transit src="*" target="new" />
     </genrep:action>
-    <h2>Влез</h2>
-    <ui:include src="/WEB-INF/includes/sales/InputFields.jspx" />
-    <genrep:buttonsWriter id="btwrInput" form_id="Input" exclude="Publish;Unpublish;Search:ShowAll;Info;New;Cancel">
+    <h2>ИЗЛЕЗ</h2>
+    <ui:include src="/WEB-INF/includes/sales/OutputFields.jspx" />
+    <genrep:buttonsWriter id="btwrOutput" form_id="Output" exclude="Publish;Unpublish;Search:ShowAll;Info;New;Cancel">
         <genrep:button id="Cancelv" image="/images/cancel.png"
                        action="Cancelnew"
                        value="#{genrepmsgs['Cancel']}" />
     </genrep:buttonsWriter>
-    <!-- <genrep:table id="Input_Table"
-                  tableClass="com.sales.core.Input"
+    <!-- <genrep:table id="Output_Table"
+                  tableClass="com.warehouse.core.Output"
                   columnFields="date">
-        <genrep:rowSelector id="SelectedID111" action="SelectIPfromTable" />
+        <genrep:rowSelector id="SelectedID" action="SelectIPfromTable" />
         <genrep:columns/>
     </genrep:table> -->
 </genrep:formWraper>
