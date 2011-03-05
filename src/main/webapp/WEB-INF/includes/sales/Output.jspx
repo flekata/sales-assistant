@@ -11,13 +11,27 @@
     <genrep:action name="SelectIPfromTable" class="com.genrep.rowAction.SelectIPfromTable">
         <genrep:transit src="*" target="edit"/>
     </genrep:action>
+    <genrep:action name="SelectOutput" class="com.sales.action.SelectOutput"
+                    params="table_inputpopup_tableSearchInPopUp">
+        <genrep:transit src="*" target="#"/>
+    </genrep:action>
+    <genrep:action name="FullyPaidEvent" 
+                   params="outputText_paidSumout"
+                   class="com.sales.action.FullyPaidEvent">
+        <genrep:transit src="*" target="*"/>
+    </genrep:action>
+    <genrep:action name="OutputSearchFiltered"
+                   class="com.sales.action.OutputSearchFiltered"
+                   params="table_inputpopup_tableSearchInPopUp">
+        <genrep:transit src="*" target="inputpopup_PopUp"/>
+    </genrep:action>
     <genrep:action class="com.genrep.action.Cancel"
                    name="Cancelnew">
         <genrep:transit src="*" target="new" />
     </genrep:action>
     <h2>ИЗЛЕЗ</h2>
     <ui:include src="/WEB-INF/includes/sales/OutputFields.jspx" />
-    <genrep:buttonsWriter id="btwrOutput" form_id="Output" exclude="Publish;Unpublish;Search:ShowAll;Info;New;Cancel">
+    <genrep:buttonsWriter id="btwrOutput" form_id="Output" exclude="Publish;Unpublish;Search;ShowAll;Info;New;Cancel">
         <genrep:button id="Cancelv" image="/images/cancel.png"
                        action="Cancelnew"
                        value="#{genrepmsgs['Cancel']}" />

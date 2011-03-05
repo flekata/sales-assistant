@@ -94,6 +94,10 @@
                             method="getWarehausesFromSql"
                             params="com.genrep.guimodel.service.gui.comp.AGUIContainer" />
                             -->
+        <genrepns:methods alias="getBalanceReport"
+                            class="com.warehouse.methods.SalesAssistantMethods"
+                            method="getBalanceReport"
+                            params="com.genrep.guimodel.service.gui.comp.AGUIContainer" />
         <genrepns:methods alias="getClassifications"
                           class="com.genrep.service.reader.SalesAssistantServiceReader"
                           method="getClassifications"

@@ -1,0 +1,23 @@
+<genrep:formWraper id="Balance"
+                   xmlns:h="http://java.sun.com/jsf/html"
+                   xmlns:f="http://java.sun.com/jsf/core"
+                   xmlns:genrep="http://www.genrepsoft.com/jsf"
+                   xmlns:ice="http://www.icesoft.com/icefaces/component"
+                   xmlns:c="http://java.sun.com/jstl/core"
+                   xmlns:ui="http://java.sun.com/jsf/facelets"
+                   bean="com.sales.beans.BalanceTableColumns"
+                   catalogBean="#{clsfCatalog}"
+                   enableState="#{false}">
+
+    <genrep:table id="Balance_Table"
+                  caption="BalanceTable"
+                  tableClass="com.sales.core.Output"
+                  columnFields="inp.number;inp.date;inp.invoiceNumber;inp.price;inp.organization.name;paid;partlyPaid;paidSum;amountToBePaid"
+                  refresh="#{true}"
+                  renderButtons="#{false}"
+                  params=".container"
+                  method="getBalanceReport">
+        <genrep:columns/>
+    </genrep:table>
+</genrep:formWraper>
+

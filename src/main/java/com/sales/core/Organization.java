@@ -4,13 +4,13 @@
  */
 package com.sales.core;
 
-import com.genrep.document.ADocument;
+import com.genrep.persistence.service.AEntity;
 
 /**
  *
  * @author Kiril Arsov
  */
-public class Organization extends ADocument {
+public class Organization extends AEntity {
     // bank/organization/company name
     private String name;
     // unique account number

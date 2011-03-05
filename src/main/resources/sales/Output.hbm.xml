@@ -1,20 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
-    <class name="com.sales.core.Output" table="sales.OUTPT">
-        <id name="UID">
-            <generator class="uuid"/>
-        </id>
-        <many-to-one class="com.sales.core.Input"
-        name="inp" column="inp" />
-        <property name="paid">
-            <column name="paid" default="0"/>    
-        </property>
-        <property  name="partlyPaid">
-            <column name="partlyPaid" default="0" />   
-        </property>
-        <many-to-one class="com.sales.core.Payments"
-        name="payments" column="payments" />
-        <property column="paidSum" name="paidSum"/>
-    </class>
+  <class name="com.sales.core.Output" table="sales.OUTPT">
+    <id name="UID">
+      <generator class="uuid"/>
+    </id>
+    <many-to-one class="com.sales.core.Input" column="inp" name="inp"/>
+    <property name="paid">
+      <column default="0" name="paid"/>
+    </property>
+    <property name="partlyPaid">
+      <column default="0" name="partlyPaid"/>
+    </property>
+    <bag cascade="save-update" name="payments">
+      <key column="payments"/>
+      <one-to-many class="com.sales.core.Payments"/>
+    </bag>
+    <property column="paidSum" name="paidSum"/>
+  </class>
 </hibernate-mapping>

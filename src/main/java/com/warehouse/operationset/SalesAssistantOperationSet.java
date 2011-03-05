@@ -29,6 +29,71 @@ public class SalesAssistantOperationSet extends AOperationSet {
         super(appClassName, sessionName);
     }
 
+    public List getAllOutput() {
+        try {
+            ICriteria criteria = getOpSession().createCriteria(Output.class);
+            return criteria.list();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            return null;
+        }
+    }
+
+    public Object getInputByUid(String uid) {
+        try {
+            ICriteria criteria = getOpSession().createCriteria(Input.class);
+            IExpression expression = criteria.createExpression();
+            criteria.addExpresion(expression.eq("UID", uid));
+            return criteria.uniqueResult();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            return null;
+        }
+    }
+
+    public List getInputNotBalanced() {
+        try {
+            ISqlQuery query;
+            query = getOpSession().createSQLQuery("select SALES.INP.UID from SALES.INP "
+                    + "where SALES.INP.UID not in( "
+                    + "select SALES.INP.UID from SALES.INP "
+                    + "join SALES.OUTPT on SALES.OUTPT.INP = SALES.INP.UID)");
+            query.setRootEntityResultTransformer();
+            return query.list();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            return null;
+        }
+    }
+
+    public List findInputFiltered(Date date, String invoiceNumber, String orgName) {
+        try {
+            ICriteria criteria = getOpSession().createCriteria(Output.class);
+            IExpression expression = criteria.createExpression();
+            criteria.addExpresion(expression.eq("paid", Boolean.FALSE));
+            ICriteria orgCriteriaw = criteria.createCriteria("inp", "inp");
+            if (date != null) {
+                orgCriteriaw.addExpresion(expression.eq("date", date));
+            }
+            if (invoiceNumber != null) {
+                orgCriteriaw.addExpresion(expression.eq("invoiceNumber", invoiceNumber));
+            }
+            if (orgName != null) {
+                orgCriteriaw.createAlias("organization", "organization");
+                orgCriteriaw.addExpresion(expression.eq("organization.name", orgName));
+            }
+            IProjections prj = criteria.createProjections();
+            prj.property("inp");
+            criteria.setProjection(prj);
+
+            criteria.setDistinctRootEntityResultTransformer();
+            return criteria.list();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            return null;
+        }
+    }
+
     public List findInput(String orgName, Date date, String invoiceNumber) {
         try {
             ICriteria criteria = getOpSession().createCriteria(Input.class);
@@ -72,6 +137,23 @@ public class SalesAssistantOperationSet extends AOperationSet {
                 criteria.createAlias("inp.organization", "organization");
                 criteria.addExpresion(expression.eq("organization.name", orgName));
             }
+
+            return criteria.list();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            return null;
+        }
+    }
+
+    public List<Output> checkIfPartlyPaid(String uid) {
+        try {
+            ICriteria criteria = getOpSession().createCriteria(Output.class);
+            IExpression expression = criteria.createExpression();
+
+
+            criteria.createAlias("inp", "inp");
+            criteria.addExpresion(expression.eq("inp.UID", uid));
+            criteria.addExpresion(expression.eq("partlyPaid", Boolean.TRUE));
 
             return criteria.list();
         } catch (Exception ex) {
