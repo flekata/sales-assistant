@@ -24,6 +24,8 @@ public class Output extends AEntity {
     private List<Payments> payments;
     // paid comulative
     private BigDecimal paidSum;
+    // auto bean calculations
+    BigDecimal amountToBePaid = new BigDecimal("0.0");
     /// view fields
     List<Output> tableList;
     Integer current;
@@ -97,4 +99,16 @@ public class Output extends AEntity {
     public void setTableList(List<Output> tableList) {
         this.tableList = tableList;
     }
+
+    public BigDecimal getAmountToBePaid() {
+        Input input = getInp();
+        if (input != null) {
+            BigDecimal price = input.getPrice();
+            if (this.paidSum != null) {
+                amountToBePaid = price.subtract(this.paidSum);
+            }
+        }
+        return amountToBePaid;
+    }
+
 }

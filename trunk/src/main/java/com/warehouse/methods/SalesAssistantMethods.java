@@ -7,6 +7,7 @@ package com.warehouse.methods;
 import com.genrep.container.service.application.AppFactory;
 import com.genrep.guimodel.gui.comp.combo.Combo;
 import com.genrep.guimodel.service.gui.comp.AGUIContainer;
+import com.sales.core.Output;
 import com.warehouse.beans.WarehouseTableColumns;
 import com.warehouse.core.Warehouse;
 import com.warehouse.procedure.SalesAssistantProcedure;
@@ -20,6 +21,13 @@ import java.util.List;
  */
 public class SalesAssistantMethods {
 
+    public List getBalanceReport(AGUIContainer container) {
+        List<Output> result = new ArrayList<Output>();
+        SalesAssistantProcedure proc =
+                new SalesAssistantProcedure(AppFactory.getCurrentApplication().getName(), "codexSession");
+        result = proc.getAllOutput();
+        return result;
+    }
 //    public List getWarehausesFromSql(AGUIContainer container) {
 //        List<WarehouseTableColumns> list = new ArrayList<WarehouseTableColumns>();
 //        AGUIContainer cont = (AGUIContainer) container.getContainers().get("Warehouse");

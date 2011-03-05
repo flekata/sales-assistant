@@ -38,7 +38,6 @@ public class SearchInput extends AAction {
         Text invoiceNumbers = (Text) getParams()[2];
         String invoiceNumber = (String) invoiceNumbers.getValueObject();
 
-        Date datecd = null;
         Table table = (Table) getParams()[3];
 
         SalesAssistantOperationSet proc = new SalesAssistantOperationSet(AppFactory.getCurrentApplication().getName(), "codexSession");

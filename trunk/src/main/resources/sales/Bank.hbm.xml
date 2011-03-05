@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
-    <class name="com.sales.core.Bank" table="sales.BANK" polymorphism="explicit">
-        <id name="UID">
-            <generator class="uuid"/>
-        </id>
-        <property column="name" name="name"/>
-        <property column="accountNumber" name="accountNumber"/>
-        <property column="contact" name="contact"/>
-    </class>
+  <class name="com.sales.core.Bank" polymorphism="explicit" table="sales.BANK">
+    <id name="UID">
+      <generator class="uuid"/>
+    </id>
+    <property column="name" name="name"/>
+    <property column="accountNumber" name="accountNumber"/>
+    <property column="contact" name="contact"/>
+  </class>
 </hibernate-mapping>

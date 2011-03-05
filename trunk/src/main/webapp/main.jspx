@@ -35,11 +35,11 @@
                     </ice:menuItem>
                     <ice:menuItem id="View" actionListener="#{form.containerBean.primaryListener}"
                                   value="#{genrepmsgs['View']}">
-                        <!-- <ice:menuItem id="warehouse" actionListener="#{form.containerBean.primaryListener}"
-                                      value="#{genrepmsgs['warehouse']}">
+                         <ice:menuItem id="balance" actionListener="#{form.containerBean.primaryListener}"
+                                      value="#{genrepmsgs['balance']}">
                             <f:param name="myParam"
-                                     value="warehouse/Warehouse.jspx"/>
-                        </ice:menuItem> -->
+                                     value="sales/Balance.jspx"/>
+                        </ice:menuItem> 
                         <ice:menuItem id="InputView" actionListener="#{form.containerBean.primaryListener}"
                                       value="#{genrepmsgs['InputView']}">
                             <f:param name="myParam"
