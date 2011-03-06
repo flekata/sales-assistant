@@ -6,6 +6,7 @@ package com.sales.core;
 
 import com.genrep.persistence.service.AEntity;
 import java.math.BigDecimal;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -14,6 +15,7 @@ import java.util.List;
  */
 public class Output extends AEntity {
 
+    private Date date;
     // invoice (Input)
     private Input inp;
     // flag if the invoice is fully paid
@@ -30,6 +32,14 @@ public class Output extends AEntity {
     List<Output> tableList;
     Integer current;
     Integer tableListSize;
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
 
     public BigDecimal getPaidSum() {
         return paidSum;
@@ -110,5 +120,4 @@ public class Output extends AEntity {
         }
         return amountToBePaid;
     }
-
 }

@@ -12,7 +12,7 @@
         <genrep:transit src="*" target="edit"/>
     </genrep:action>
     <genrep:action name="SelectOutput" class="com.sales.action.SelectOutput"
-                    params="table_inputpopup_tableSearchInPopUp">
+                   params="table_inputpopup_tableSearchInPopUp">
         <genrep:transit src="*" target="#"/>
     </genrep:action>
     <genrep:action name="FullyPaidEvent" 
@@ -31,16 +31,17 @@
     </genrep:action>
     <h2>ИЗЛЕЗ</h2>
     <ui:include src="/WEB-INF/includes/sales/OutputFields.jspx" />
-    <genrep:buttonsWriter id="btwrOutput" form_id="Output" exclude="Publish;Unpublish;Search;ShowAll;Info;New;Cancel">
+ 
+    <genrep:buttonsWriter id="btwrOutput" form_id="Output" exclude="Publish;Unpublish;Info;New;Cancel">
         <genrep:button id="Cancelv" image="/images/cancel.png"
                        action="Cancelnew"
                        value="#{genrepmsgs['Cancel']}" />
     </genrep:buttonsWriter>
-    <!-- <genrep:table id="Output_Table"
-                  tableClass="com.warehouse.core.Output"
-                  columnFields="date">
+    <genrep:table id="Output_Table"
+                  tableClass="com.sales.core.Output"
+                  columnFields="partlyPaid;paid;paidSumout;inp.number;inp.date;inp.invoiceNumber;inp.price;inp.organization.name">
         <genrep:rowSelector id="SelectedID" action="SelectIPfromTable" />
         <genrep:columns/>
-    </genrep:table> -->
+    </genrep:table> 
 </genrep:formWraper>
 

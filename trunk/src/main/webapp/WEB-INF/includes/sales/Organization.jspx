@@ -20,29 +20,30 @@
         <genrep:transit src="*" target="new" />
     </genrep:action>
     <h2>Фирма</h2>
-    <genrep:outputLabel id="namename" value="#{genrepmsgs['name']}" />
-    <genrep:inputText id="name" field="name" />
+    <genrep:panelGrid columns="2">
+        <genrep:outputLabel id="namename" value="#{genrepmsgs['name']}" />
+        <genrep:inputText id="name" field="name" />
 
-    <genrep:outputLabel id="accountNumberaccountNumber" value="#{genrepmsgs['accountNumber']}" />
-    <genrep:inputText  field="accountNumber" />
+        <genrep:outputLabel id="accountNumberaccountNumber" value="#{genrepmsgs['accountNumber']}" />
+        <genrep:inputText  field="accountNumber" />
 
-    <genrep:outputLabel id="contactcontact" value="#{genrepmsgs['contact']}" />
-    <genrep:inputText  field="contact" />
+        <genrep:outputLabel id="contactcontact" value="#{genrepmsgs['contact']}" />
+        <genrep:inputText  field="contact" />
 
-    <genrep:outputLabel id="bankbank" value="#{genrepmsgs['bank']}" />
-    <genrep:panelGrid id="Inputbank" columns="4" >
-        <genrep:combo id="bankk"
-                      field="bank"
-                      insertNull="#{false}"
-                      method="get"
-                      labelField="name"
-                      catalogBean="#{clsfCatalog}"
-                      params="com.sales.core.Bank"
-                      refresh="#{true}"/>
-        <genrep:inputText id="newbankk" size="16"/>
-        <genrep:button id="btnbank" action="AddNewBank" />
+        <genrep:outputLabel id="bankbank" value="#{genrepmsgs['bank']}" />
+        <genrep:panelGrid id="Inputbank" columns="4" >
+            <genrep:combo id="bankk"
+                          field="bank"
+                          insertNull="#{false}"
+                          method="get"
+                          labelField="name"
+                          catalogBean="#{clsfCatalog}"
+                          params="com.sales.core.Bank"
+                          refresh="#{true}"/>
+            <genrep:inputText id="newbankk" size="16"/>
+            <genrep:button id="btnbank" action="AddNewBank" />
+        </genrep:panelGrid>
     </genrep:panelGrid>
-
     <genrep:buttonsWriter form_id="Organization" exclude="Publish;Unpublish;Info;New;Cancel">
         <genrep:button id="Cancelv" image="/images/cancel.png"
                        action="Cancelnew"

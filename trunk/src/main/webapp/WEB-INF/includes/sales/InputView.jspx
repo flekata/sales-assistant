@@ -88,7 +88,7 @@
         <f:facet name="header" >
             <genrep:panelGrid id="Inputgrd113" columns="3" styleClass="clos">
                 <genrep:button id="delete1323" action="prepareDelete" image="/images/delete.png" styleClass="clos4"/>
-                <genrep:button id="new1323" action="edit" image="/images/edit.png" styleClass="clos5"/>
+              <!--  <genrep:button id="new1323" action="edit" image="/images/edit.png" styleClass="clos5"/> -->
                 <genrep:button id="edit1323" action="new" image="/images/close2.PNG" styleClass="clos3"/>
             </genrep:panelGrid>
         </f:facet>
