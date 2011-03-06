@@ -29,9 +29,23 @@ public class SalesAssistantOperationSet extends AOperationSet {
         super(appClassName, sessionName);
     }
 
-    public List getAllOutput() {
+    public List getAllOutput(Boolean paid, Boolean partlyPaid, String invoiceNumber, String orgName) {
         try {
             ICriteria criteria = getOpSession().createCriteria(Output.class);
+            IExpression expression = criteria.createExpression();
+
+            criteria.addExpresion(expression.eq("paid", paid));
+            criteria.addExpresion(expression.eq("partlyPaid", partlyPaid));
+            
+            if (invoiceNumber != null) {
+                criteria.createAlias("inp", "inp");
+                criteria.addExpresion(expression.eq("inp.invoiceNumber", invoiceNumber));
+            }
+            if (orgName != null) {
+                criteria.createAlias("inp", "inp");
+                criteria.createAlias("inp.organization", "organization");
+                criteria.addExpresion(expression.eq("organization.name", orgName));
+            }
             return criteria.list();
         } catch (Exception ex) {
             ex.printStackTrace();

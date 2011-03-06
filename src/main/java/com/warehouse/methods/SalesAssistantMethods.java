@@ -5,14 +5,17 @@
 package com.warehouse.methods;
 
 import com.genrep.container.service.application.AppFactory;
+import com.genrep.guimodel.gui.comp.checkBox.CheckBox;
 import com.genrep.guimodel.gui.comp.combo.Combo;
+import com.genrep.guimodel.gui.comp.text.Text;
+import com.genrep.guimodel.ns.NameSpaceFactory;
+import com.genrep.guimodel.service.app.Application;
 import com.genrep.guimodel.service.gui.comp.AGUIContainer;
+import com.sales.core.Organization;
 import com.sales.core.Output;
 import com.warehouse.beans.WarehouseTableColumns;
-import com.warehouse.core.Warehouse;
 import com.warehouse.procedure.SalesAssistantProcedure;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 /**
@@ -22,10 +25,30 @@ import java.util.List;
 public class SalesAssistantMethods {
 
     public List getBalanceReport(AGUIContainer container) {
+        NameSpaceFactory nsFactory =
+                (NameSpaceFactory) ((Application) AppFactory.getCurrentApplication()).getNameSpaceFactory();
+        CheckBox paids = (CheckBox) ((List) nsFactory.getNamespaceComponents("balance", "paids")).get(0);
+        CheckBox partlyPaids = (CheckBox) ((List) nsFactory.getNamespaceComponents("balance", "partlyPaids")).get(0);
+        Text txt1 = (Text) ((List) nsFactory.getNamespaceComponents("balance", "invoiceNumbers")).get(0);
+        Combo cmb = (Combo) ((List) nsFactory.getNamespaceComponents("balance", "orgNames")).get(0);
+        Boolean paid = Boolean.FALSE;
+        Boolean partlyPaid = Boolean.FALSE;
+        String orgName = null;
+        String invoiceNumber =(String) txt1.getValueObject();
+        if (paids.getValueObject() != null) {
+            paid = (Boolean) paids.getValueObject();
+        }
+        if (partlyPaids.getValueObject() != null) {
+            partlyPaid = (Boolean) partlyPaids.getValueObject();
+        }
+        Organization org= (Organization)cmb.getValueObject();
+        if (org != null) {
+            orgName = (String) org.getName();
+        }
         List<Output> result = new ArrayList<Output>();
         SalesAssistantProcedure proc =
                 new SalesAssistantProcedure(AppFactory.getCurrentApplication().getName(), "codexSession");
-        result = proc.getAllOutput();
+        result = proc.getAllOutput(paid, partlyPaid, invoiceNumber, orgName);
         return result;
     }
 //    public List getWarehausesFromSql(AGUIContainer container) {

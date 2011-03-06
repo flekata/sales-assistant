@@ -9,6 +9,11 @@
                    catalogBean="#{codexCatalog}"
                    enableState="#{false}">
     <genrep:mode name="warn" />
+    <genrep:action name="FullyPaidEvent" 
+                   params="outputText_paidSumout"
+                   class="com.sales.action.FullyPaidEvent">
+        <genrep:transit src="*" target="*"/>
+    </genrep:action>
     <genrep:action name="no" class="com.sales.action.BothAction">
         <genrep:transit src="*" target="read"/>
     </genrep:action>
@@ -96,7 +101,7 @@
         <f:facet name="header" >
             <genrep:panelGrid id="Inputgrd11" columns="3" styleClass="clos">
                 <genrep:button id="delete132" action="prepareDelete" image="/images/delete.png" styleClass="clos4"/>
-                <genrep:button id="new132" action="edit" image="/images/edit.png" styleClass="clos5"/>
+              <!--  <genrep:button id="new132" action="edit" image="/images/edit.png" styleClass="clos5"/> -->
                 <genrep:button id="edit132" action="new" image="/images/close2.PNG" styleClass="clos3"/>
             </genrep:panelGrid>
         </f:facet>

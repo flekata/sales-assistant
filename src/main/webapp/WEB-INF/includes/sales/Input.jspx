@@ -24,16 +24,16 @@
     </genrep:action>
     <h2>Влез</h2>
     <ui:include src="/WEB-INF/includes/sales/InputFields.jspx" />
-    <genrep:buttonsWriter id="btwrInput" form_id="Input" exclude="Publish;Unpublish;Search:ShowAll;Info;New;Cancel">
+    <genrep:buttonsWriter id="btwrInput" form_id="Input" exclude="Publish;Unpublish;Info;New;Cancel">
         <genrep:button id="Cancelv" image="/images/cancel.png"
                        action="Cancelnew"
                        value="#{genrepmsgs['Cancel']}" />
     </genrep:buttonsWriter>
-    <!-- <genrep:table id="Input_Table"
+     <genrep:table id="Input_Table"
                   tableClass="com.sales.core.Input"
-                  columnFields="date">
+                  columnFields="number;date;invoiceNumber;price;organization.name">
         <genrep:rowSelector id="SelectedID111" action="SelectIPfromTable" />
         <genrep:columns/>
-    </genrep:table> -->
+    </genrep:table> -
 </genrep:formWraper>
 

@@ -8,16 +8,43 @@
                    bean="com.sales.beans.BalanceTableColumns"
                    catalogBean="#{clsfCatalog}"
                    enableState="#{false}">
+    <genrep:panelGrid columns="10">
+        <genrep:outputLabel id="paidpaids" value="#{genrepmsgs['fullyPaid']}" />
+        <genrep:checkBox id="paids" submittable="#{true}" namespaceRef="balance:paids"/>
 
+        <genrep:outputLabel id="partlyPaidpartlyPaids" value="#{genrepmsgs['partlyPaid']}" />
+        <genrep:checkBox id="partlyPaids" submittable="#{true}" namespaceRef="balance:partlyPaids"/>
+
+        <genrep:outputLabel value="#{genrepmsgs['invoiceNumber']}" />
+        <genrep:inputText id="invoiceNumbers" submittable="#{true}" namespaceRef="balance:invoiceNumbers"/>
+
+        <genrep:outputLabel value="#{genrepmsgs['orgName']}" />
+        <genrep:combo id="orgNames"
+                      method="get"
+                      labelField="name"
+                      catalogBean="#{clsfCatalog}"
+                      params="com.sales.core.Organization"
+                      submittable="#{true}"
+                      namespaceRef="balance:orgNames"
+                      refresh="#{true}"/>
+    </genrep:panelGrid>
     <genrep:table id="Balance_Table"
                   caption="BalanceTable"
                   tableClass="com.sales.core.Output"
-                  columnFields="inp.number;inp.date;inp.invoiceNumber;inp.price;inp.organization.name;paid;partlyPaid;paidSum;amountToBePaid"
+                  columnFields="inp.number;inp.date;inp.invoiceNumber;inp.price;inp.organization.name;paidSum;amountToBePaid"
                   refresh="#{true}"
                   renderButtons="#{false}"
                   params=".container"
                   method="getBalanceReport">
         <genrep:columns/>
+        <genrep:column id="paid" header="paid">
+            <ice:outputText value="Да" rendered="#{tableItem['row'].paid==true}"/>
+            <ice:outputText value="Не" rendered="#{tableItem['row'].paid==false}"/>
+        </genrep:column>
+        <genrep:column id="partlyPaid" header="partlyPaid">
+            <ice:outputText value="Да" rendered="#{tableItem['row'].partlyPaid==true}"/>
+            <ice:outputText value="Не" rendered="#{tableItem['row'].partlyPaid==false}"/>
+        </genrep:column>
     </genrep:table>
 </genrep:formWraper>
 
