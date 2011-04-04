@@ -51,7 +51,7 @@
     </genrep:buttonsWriter>
     <genrep:table id="Organization_Table"
                   tableClass="com.sales.core.Organization"
-                  columnFields="name">
+                  columnFields="name;accountNumber;contact;bank.name">
         <genrep:rowSelector id="SelectedID11" action="SelectIPfromTable" />
         <genrep:columns/>
     </genrep:table> 
