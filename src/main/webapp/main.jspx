@@ -11,62 +11,66 @@
                            catalogBean="#{codexCatalog}"
                            enableState="#{false}"
                            writeMode="#{false}">
-            <div class="cenn1">
-                <ice:menuBar id="menuBar"
-                             orientation="Horizontal">
+            <div>
+                <div style="float: left">
+                    <ice:menuBar id="menuBar"
+                                 orientation="Vertical">
 
-                    <ice:menuItem id="New" styleClass="cenn1" actionListener="#{form.containerBean.primaryListener}"
-                                  value="#{genrepmsgs['New']}">
-                        <ice:menuItem id="Input" actionListener="#{form.containerBean.primaryListener}"
-                                      value="#{genrepmsgs['Input']}">
-                            <f:param name="myParam"
-                                     value="sales/Input.jspx"/>
+                        <ice:menuItem id="New" styleClass="cenn1" actionListener="#{form.containerBean.primaryListener}"
+                                      value="#{genrepmsgs['New']}">
+                            <ice:menuItem id="Input" actionListener="#{form.containerBean.primaryListener}"
+                                          value="#{genrepmsgs['Input']}">
+                                <f:param name="myParam"
+                                         value="sales/Input.jspx"/>
+                            </ice:menuItem>
+                            <ice:menuItem id="Organization" actionListener="#{form.containerBean.primaryListener}"
+                                          value="#{genrepmsgs['Organization']}">
+                                <f:param name="myParam"
+                                         value="sales/Organization.jspx"/>
+                            </ice:menuItem>
+                            <ice:menuItem id="Output" actionListener="#{form.containerBean.primaryListener}"
+                                          value="#{genrepmsgs['Output']}">
+                                <f:param name="myParam"
+                                         value="sales/Output.jspx"/>
+                            </ice:menuItem>
                         </ice:menuItem>
-                        <ice:menuItem id="Organization" actionListener="#{form.containerBean.primaryListener}"
-                                      value="#{genrepmsgs['Organization']}">
-                            <f:param name="myParam"
-                                     value="sales/Organization.jspx"/>
+                        <ice:menuItem id="View" actionListener="#{form.containerBean.primaryListener}"
+                                      value="#{genrepmsgs['View']}">
+                            <ice:menuItem id="balance" actionListener="#{form.containerBean.primaryListener}"
+                                          value="#{genrepmsgs['balance']}">
+                                <f:param name="myParam"
+                                         value="sales/Balance.jspx"/>
+                            </ice:menuItem> 
+                            <ice:menuItem id="InputView" actionListener="#{form.containerBean.primaryListener}"
+                                          value="#{genrepmsgs['InputView']}">
+                                <f:param name="myParam"
+                                         value="sales/InputView.jspx"/>
+                            </ice:menuItem>
+                            <ice:menuItem id="OutputView" actionListener="#{form.containerBean.primaryListener}"
+                                          value="#{genrepmsgs['OutputView']}">
+                                <f:param name="myParam"
+                                         value="sales/OutputView.jspx"/>
+                            </ice:menuItem>
                         </ice:menuItem>
-                        <ice:menuItem id="Output" actionListener="#{form.containerBean.primaryListener}"
-                                      value="#{genrepmsgs['Output']}">
-                            <f:param name="myParam"
-                                     value="sales/Output.jspx"/>
+                        <!--
+                        <ice:menuItem id="Report" actionListener="#{form.containerBean.primaryListener}"
+                                      value="#{genrepmsgs['Report']}">
+                            <ice:menuItem id="warehouse" actionListener="#{form.containerBean.primaryListener}"
+                                          value="#{genrepmsgs['ReportItem']}">
+                                <f:param name="myParam"
+                                         value="warehouse/Report.jspx"/>
+                            </ice:menuItem>
                         </ice:menuItem>
-                    </ice:menuItem>
-                    <ice:menuItem id="View" actionListener="#{form.containerBean.primaryListener}"
-                                  value="#{genrepmsgs['View']}">
-                         <ice:menuItem id="balance" actionListener="#{form.containerBean.primaryListener}"
-                                      value="#{genrepmsgs['balance']}">
-                            <f:param name="myParam"
-                                     value="sales/Balance.jspx"/>
-                        </ice:menuItem> 
-                        <ice:menuItem id="InputView" actionListener="#{form.containerBean.primaryListener}"
-                                      value="#{genrepmsgs['InputView']}">
-                            <f:param name="myParam"
-                                     value="sales/InputView.jspx"/>
-                        </ice:menuItem>
-                        <ice:menuItem id="OutputView" actionListener="#{form.containerBean.primaryListener}"
-                                      value="#{genrepmsgs['OutputView']}">
-                            <f:param name="myParam"
-                                     value="sales/OutputView.jspx"/>
-                        </ice:menuItem>
-                    </ice:menuItem>
-                    <!--
-                    <ice:menuItem id="Report" actionListener="#{form.containerBean.primaryListener}"
-                                  value="#{genrepmsgs['Report']}">
-                        <ice:menuItem id="warehouse" actionListener="#{form.containerBean.primaryListener}"
-                                      value="#{genrepmsgs['ReportItem']}">
-                            <f:param name="myParam"
-                                     value="warehouse/Report.jspx"/>
-                        </ice:menuItem>
-                    </ice:menuItem>
-                    -->
-                </ice:menuBar>
+                        -->
+                    </ice:menuBar>
+                </div>
+                <div style="padding-left: 50px ;float: left;width: 80% ">
+
+                    <ui:include src="/WEB-INF/includes/#{form.containerBean.currentDisplay}" />
+
+                </div>
             </div>
-            <br/><br/>
-            <div style="padding-left: 15px; padding-right: 15px;">
-                <ui:include src="/WEB-INF/includes/#{form.containerBean.currentDisplay}" />
-            </div>
+
         </genrep:formWraper>
     </ui:define>
 </genrep:page>

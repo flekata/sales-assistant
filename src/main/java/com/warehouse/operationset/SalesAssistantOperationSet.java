@@ -36,13 +36,15 @@ public class SalesAssistantOperationSet extends AOperationSet {
 
             criteria.addExpresion(expression.eq("paid", paid));
             criteria.addExpresion(expression.eq("partlyPaid", partlyPaid));
-            
+
             if (invoiceNumber != null) {
                 criteria.createAlias("inp", "inp");
                 criteria.addExpresion(expression.eq("inp.invoiceNumber", invoiceNumber));
             }
             if (orgName != null) {
-                criteria.createAlias("inp", "inp");
+                if (invoiceNumber == null) {
+                    criteria.createAlias("inp", "inp");
+                }
                 criteria.createAlias("inp.organization", "organization");
                 criteria.addExpresion(expression.eq("organization.name", orgName));
             }
@@ -147,7 +149,9 @@ public class SalesAssistantOperationSet extends AOperationSet {
                 criteria.addExpresion(expression.eq("inp.invoiceNumber", invoiceNumber));
             }
             if (orgName != null) {
-                criteria.createAlias("inp", "inp");
+                if (invoiceNumber == null) {
+                    criteria.createAlias("inp", "inp");
+                }
                 criteria.createAlias("inp.organization", "organization");
                 criteria.addExpresion(expression.eq("organization.name", orgName));
             }
