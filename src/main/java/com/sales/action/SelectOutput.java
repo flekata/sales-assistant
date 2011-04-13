@@ -48,7 +48,7 @@ public class SelectOutput extends ARowAction {
         Output resultContainerBean = (Output) container.getContainer().getContainerBean();
 
         SalesAssistantProcedure proc =
-                new SalesAssistantProcedure(AppFactory.getCurrentApplication().getName(), "codexSession");
+                new SalesAssistantProcedure(AppFactory.getCurrentApplication().getName(), "codexEntity");
         List<Output> chlist = proc.checkIfPartlyPaid(bean.getUID());
 
         Boolean fullyPaid = Boolean.TRUE;

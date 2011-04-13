@@ -6,6 +6,7 @@ package com.sales.core;
 
 import com.genrep.persistence.service.AEntity;
 import java.math.BigDecimal;
+import java.math.BigInteger;
 import java.util.Date;
 import java.util.List;
 
@@ -27,7 +28,7 @@ public class Output extends AEntity {
     // paid comulative
     private BigDecimal paidSum;
     // auto bean calculations
-    BigDecimal amountToBePaid = new BigDecimal("0.0");
+    private BigDecimal amountToBePaid = new BigDecimal("0.0");
     /// view fields
     List<Output> tableList;
     Integer current;
@@ -116,8 +117,15 @@ public class Output extends AEntity {
             BigDecimal price = input.getPrice();
             if (this.paidSum != null) {
                 amountToBePaid = price.subtract(this.paidSum);
+            } else if (price != null) {
+                amountToBePaid = price;
             }
         }
         return amountToBePaid;
     }
+
+    public void setAmountToBePaid(BigDecimal amountToBePaid) {
+        this.amountToBePaid = amountToBePaid;
+    }
+    
 }
