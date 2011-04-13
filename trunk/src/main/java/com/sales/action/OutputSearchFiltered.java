@@ -10,16 +10,12 @@ import com.genrep.guimodel.gui.comp.date.DateComp;
 import com.genrep.guimodel.gui.comp.table.Table;
 import com.genrep.guimodel.gui.comp.text.Text;
 import com.genrep.guimodel.service.action.AAction;
-import com.genrep.operationset.service.exception.OperationSetException;
-import com.genrep.system.service.AppSystem;
 import com.sales.core.Input;
 import com.sales.core.Organization;
 import com.warehouse.procedure.SalesAssistantProcedure;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -41,7 +37,7 @@ public class OutputSearchFiltered extends AAction {
             orgName = org.getName();
         }
         SalesAssistantProcedure proc =
-                new SalesAssistantProcedure(AppFactory.getCurrentApplication().getName(), "codexSession");
+                new SalesAssistantProcedure(AppFactory.getCurrentApplication().getName(), "codexEntity");
         List notBalanced = proc.getInputNotBalanced();
         if (notBalanced != null) {
             int size = notBalanced.size();

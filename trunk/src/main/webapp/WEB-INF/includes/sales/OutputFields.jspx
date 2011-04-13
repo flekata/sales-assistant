@@ -88,11 +88,14 @@
         <genrep:outputLabel id="partlyPaidpartlyPaid" value="#{genrepmsgs['partlyPaid']}" />
         <genrep:checkBox id="partlyPaid" field="partlyPaid" submittable="#{true}"/>
 
-        <genrep:panelGrid columns="4" rendered="#{form.fields['partlyPaid'].valueObject==true}">
+        <genrep:panelGrid columns="2" rendered="#{form.fields['partlyPaid'].valueObject==true}">
+            <genrep:outputLabel  value="#{genrepmsgs['amountToBePaid']}" />
+            <genrep:outputText id="amountToBePaid" field="amountToBePaid"  />
             <genrep:freeCollectionEntry id="Payments"
                                         bean="com.sales.core.Payments"
                                         catalogBean="#{clsfCatalog}"
                                         editInPopup="#{false}"
+                                        addAction="AddItem"
                                         tableCaption="Payments_Table"
                                         targetField="payments"
                                         defaultFields="date;value"
@@ -121,7 +124,7 @@
         <genrep:checkBox id="paid" field="paid" submittable="#{true}" valueChangeEvent="FullyPaidEvent"/>
 
         <genrep:outputLabel id="paidSumpaidSum" value="#{genrepmsgs['paidSum']}" rendered="#{form.fields['paid'].valueObject==true}"/>
-        <genrep:outputText id="paidSumout" rendered="#{form.fields['paid'].valueObject==true}" />
+        <genrep:outputText id="paidSumout" field="paidSum" rendered="#{form.fields['paid'].valueObject==true}" />
 
     </genrep:panelGrid>
 

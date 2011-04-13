@@ -15,6 +15,11 @@
                    params="table_inputpopup_tableSearchInPopUp">
         <genrep:transit src="*" target="#"/>
     </genrep:action>
+    <genrep:action name="AddItem" class="com.sales.action.AddOutputItem">
+        <genrep:transit src="*" target="*"/>
+        <genrep:actionParam var="targetField"
+                            value="payments" />
+    </genrep:action>
     <genrep:action name="FullyPaidEvent" 
                    params="outputText_paidSumout"
                    class="com.sales.action.FullyPaidEvent">
@@ -31,7 +36,7 @@
     </genrep:action>
     <h2>ИЗЛЕЗ</h2>
     <ui:include src="/WEB-INF/includes/sales/OutputFields.jspx" />
- 
+
     <genrep:buttonsWriter id="btwrOutput" form_id="Output" exclude="Publish;Unpublish;Info;New;Cancel">
         <genrep:button id="Cancelv" image="/images/cancel.png"
                        action="Cancelnew"
@@ -39,9 +44,17 @@
     </genrep:buttonsWriter>
     <genrep:table id="Output_Table"
                   tableClass="com.sales.core.Output"
-                  columnFields="partlyPaid;paid;paidSumout;inp.number;inp.date;inp.invoiceNumber;inp.price;inp.organization.name">
+                  columnFields="paidSum;amountToBePaid;inp.number;inp.date;inp.invoiceNumber;inp.price;inp.organization.name">
         <genrep:rowSelector id="SelectedID" action="SelectIPfromTable" />
+        <genrep:column id="paid1" header="paid">
+            <ice:outputText value="Да" rendered="#{tableItem['row'].paid==true}"/>
+            <ice:outputText value="Не" rendered="#{tableItem['row'].paid==false}"/>
+        </genrep:column>
+        <genrep:column id="partlyPaid1" header="partlyPaid">
+            <ice:outputText value="Да" rendered="#{tableItem['row'].partlyPaid==true}"/>
+            <ice:outputText value="Не" rendered="#{tableItem['row'].partlyPaid==false}"/>
+        </genrep:column>
         <genrep:columns/>
-    </genrep:table> 
+    </genrep:table>
 </genrep:formWraper>
 

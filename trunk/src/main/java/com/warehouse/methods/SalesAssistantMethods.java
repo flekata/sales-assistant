@@ -47,8 +47,9 @@ public class SalesAssistantMethods {
         }
         List<Output> result = new ArrayList<Output>();
         SalesAssistantProcedure proc =
-                new SalesAssistantProcedure(AppFactory.getCurrentApplication().getName(), "codexSession");
+                new SalesAssistantProcedure(AppFactory.getCurrentApplication().getName(), "codexEntity");
         result = proc.getAllOutput(paid, partlyPaid, invoiceNumber, orgName);
+        proc.getOpSession().flush();
         return result;
     }
 //    public List getWarehausesFromSql(AGUIContainer container) {
