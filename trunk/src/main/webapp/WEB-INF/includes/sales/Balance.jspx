@@ -8,12 +8,19 @@
                    bean="com.sales.beans.BalanceTableColumns"
                    catalogBean="#{clsfCatalog}"
                    enableState="#{false}">
+    <genrep:action name="BalanceCheckBoxDeselectEvent" class="com.sales.action.BalanceCheckBoxDeselectEvent">
+        <genrep:transit src="*" target="*"/>
+    </genrep:action>
     <genrep:panelGrid columns="10">
         <genrep:outputLabel id="paidpaids" value="#{genrepmsgs['fullyPaid']}" />
-        <genrep:checkBox id="paids" submittable="#{true}" namespaceRef="balance:paids"/>
+        <genrep:checkBox id="paids" field="fullPaid" 
+                         submittable="#{true}" namespaceRef="balance:paids"
+                         valueChangeEvent="BalanceCheckBoxDeselectEvent"/>
 
         <genrep:outputLabel id="partlyPaidpartlyPaids" value="#{genrepmsgs['partlyPaid']}" />
-        <genrep:checkBox id="partlyPaids" submittable="#{true}" namespaceRef="balance:partlyPaids"/>
+        <genrep:checkBox id="partlyPaids" field="partlyPaid" 
+                         submittable="#{true}" namespaceRef="balance:partlyPaids"
+                         valueChangeEvent="BalanceCheckBoxDeselectEvent"/>
 
         <genrep:outputLabel value="#{genrepmsgs['invoiceNumber']}" />
         <genrep:inputText id="invoiceNumbers" submittable="#{true}" namespaceRef="balance:invoiceNumbers"/>
