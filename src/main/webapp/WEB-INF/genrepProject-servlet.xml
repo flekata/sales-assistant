@@ -82,7 +82,7 @@
     <bean name="locales" scope="session"
           class="com.genrep.application.locale.LocaleBean">
     </bean>
-    <bean name="verify" class="com.sales.core.Verify" scope="singleton" />
+<!--    <bean name="verify" class="com.sales.core.Verify" scope="singleton" />-->
     <genrepns:catalog id="clsfCatalog">
 <!--
         <genrepns:methods alias="getWarehauses" 

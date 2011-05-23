@@ -29,9 +29,12 @@ public class OutputSearchFiltered extends AAction {
         Object[] params = getParams();
         Table searchTable = (Table) params[0];
         DateComp datcomp = (DateComp) getContainer().getComponents().get("fwspinputpopup_date");
+        Date fdate = (Date) datcomp.getValueObject();
         Text itext2 = (Text) getContainer().getComponents().get("fwspinputpopup_invoiceNumber");
+        String finvoiceNumber = (String) itext2.getValueObject();
         Combo itext3 = (Combo) getContainer().getComponents().get("fwspinputpopup_organization");
         Organization org = (Organization) itext3.getValueObject();
+        org = (Organization) AppFactory.getSessionManagerImpl().getObjectImpl(org);
         String orgName = null;
         if (org != null) {
             orgName = org.getName();
@@ -45,7 +48,20 @@ public class OutputSearchFiltered extends AAction {
                 Input in = (Input) proc.getInputByUid((String) notBalanced.get(i));
 
                 in = (Input) AppFactory.getSessionManagerImpl().getObjectImpl(in);
-                resultList.add(in);
+                boolean add = true;
+                if (fdate != null && fdate.compareTo(in.getDate()) != 0) {
+                    add = false;
+                }
+                if (finvoiceNumber != null && !finvoiceNumber.equalsIgnoreCase(in.getInvoiceNumber())) {
+                    add = false;
+                }
+                if (orgName != null && in.getOrganization() != null && !orgName.equalsIgnoreCase(in.getOrganization().getName())) {
+                    add = false;
+                }
+                if (add) {
+                    resultList.add(in);
+                }
+
             }
 
         }
